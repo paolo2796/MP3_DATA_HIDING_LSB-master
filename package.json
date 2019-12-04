@@ -1,0 +1,17 @@
+{
+  "name": "mpeg_audio_info",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bitwise": "^2.0.4",
+    "buffered-writer": "^0.2.3",
+    "mp3-parser": "^0.3.0"
+  }
+}
