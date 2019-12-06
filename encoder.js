@@ -36,11 +36,13 @@ fs.readFile(pathToMp3, (error, buffer) => {
         console.error("" + error);
         process.exit(1);
     }
+
+
     var buf_dataview = new DataView(toArrayBuffer(buffer));
     const tags = mp3Parser.readTags(buf_dataview);
     var sliceBuf = buffer.slice(0,tags[tags.length-1]._section.nextFrameIndex);
     newBuffer = Buffer.concat([sliceBuf]);
-    var dataFrame = mp3Parser.readFrame(buf_dataview,tags[tags.length-1]._section.nextFrameIndex);
+    var dataFrame = mp3Parser.readFrame(buf_dataview,tags[tags.length-1]._section.offset);
 
     if(!check_max_size_embed_byte(dataFrame,secret_message,buf_dataview)){
         console.warn("Il messaggio è troppo grande per essere iniettato nel file audio corrente");
@@ -51,6 +53,7 @@ fs.readFile(pathToMp3, (error, buffer) => {
 
     console.log("TOT FRAME " + totframes );
     console.log("TOT FRAME UNPADDED " + totframes_unpadded);
+    console.log(tags);
     var secret_message_arr = Array.from(secret_message);
     var i=0;
     while(dataFrame!=null && mp3Parser.readFrame(buf_dataview,dataFrame._section.nextFrameIndex) != null) {
@@ -60,13 +63,7 @@ fs.readFile(pathToMp3, (error, buffer) => {
             newBuffer = Buffer.concat(arr);
         }
         else{
-            var sliceBuf = buffer.slice(dataFrame._section.offset,dataFrame._section.nextFrameIndex);
-            var b_dataview = new DataView(toArrayBuffer(sliceBuf));
-            var value = b_dataview.getUint8(2) + 3;
-            b_dataview.setUint8(2,value);
-            var byte_padded = Buffer.from(secret_message_arr[i].toString());
-            var arr = [newBuffer,Buffer.from(b_dataview.buffer),byte_padded];
-            newBuffer = Buffer.concat(arr);
+            substituteHeaderBit(dataFrame,buffer,secret_message_arr[i].toString());
             i++;
         }
         dataFrame = mp3Parser.readFrame(buf_dataview,dataFrame._section.nextFrameIndex);
@@ -85,10 +82,27 @@ fs.readFile(pathToMp3, (error, buffer) => {
         });
     });
 
+
 });
 
 function paddingStuff(dataFrame, buffer, char) {
+    var sliceBuf = buffer.slice(dataFrame._section.offset,dataFrame._section.nextFrameIndex);
+    var b_dataview = new DataView(toArrayBuffer(sliceBuf));
+    var value = b_dataview.getUint8(2) + 3;
+    b_dataview.setUint8(2,value);
+    var byte_padded = Buffer.from(char);
+    var arr = [newBuffer,Buffer.from(b_dataview.buffer),byte_padded];
+    newBuffer = Buffer.concat(arr);
+}
 
+
+function substituteHeaderBit(dataFrame,buffer,bitchar){
+    var sliceBuf = buffer.slice(dataFrame._section.offset,dataFrame._section.nextFrameIndex);
+    var b_dataview = new DataView(toArrayBuffer(sliceBuf));
+    var value = b_dataview.getUint8(2) + 1;
+    b_dataview.setUint8(2,value);
+    var arr = [newBuffer,Buffer.from(b_dataview.buffer)];
+    newBuffer = Buffer.concat(arr);
 }
 
 function check_max_size_embed_byte(dataFrame, message,buf_dataview){

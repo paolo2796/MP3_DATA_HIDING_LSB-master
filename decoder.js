@@ -30,10 +30,12 @@ fs.readFile(pathToMp3, (error, buffer) => {
     while(dataFrame != null && mp3Parser.readFrame(buf_dataview,dataFrame._section.nextFrameIndex) != null) {
         dataFrame = mp3Parser.readFrame(buf_dataview,dataFrame._section.nextFrameIndex);
         if(dataFrame.header.frameIsPadded && dataFrame.header.privateBit==1){
+            count++;
             var sliceBuf = buffer.slice(dataFrame._section.offset,dataFrame._section.nextFrameIndex);
             var b_dataview = new DataView(toArrayBuffer(sliceBuf));
             console.log(b_dataview.getUint8(sliceBuf.length-1));
         }
     }
+    console.log(count);
 
 });

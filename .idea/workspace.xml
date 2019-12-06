@@ -3,10 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="a5a66d5a-dd1f-436e-b193-fcc85cdf24ab" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app2.js" beforeDir="false" afterPath="$PROJECT_DIR$/app2.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/audio1.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/128kbps_44100.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app2.js" beforeDir="false" afterPath="$PROJECT_DIR$/decoder.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/encoder.js" beforeDir="false" afterPath="$PROJECT_DIR$/encoder.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/file_example_MP3_5MG.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/organfinale (seconda copia).mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +55,12 @@
       <workItem from="1575465367821" duration="43000" />
       <workItem from="1575465602598" duration="82000" />
       <workItem from="1575549051990" duration="5676000" />
-      <workItem from="1575556630563" duration="10354000" />
+      <workItem from="1575556630563" duration="10665000" />
+      <workItem from="1575568437172" duration="1697000" />
+      <workItem from="1575575757924" duration="3062000" />
+      <workItem from="1575579277292" duration="670000" />
+      <workItem from="1575619578790" duration="5709000" />
+      <workItem from="1575625852501" duration="47000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1575465305278</created>
@@ -62,7 +69,14 @@
       <option name="project" value="LOCAL" />
       <updated>1575465305278</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="implement byte stuffing technique">
+      <created>1575567012973</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1575567012973</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -70,17 +84,18 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="init" />
-    <option name="LAST_COMMIT_MESSAGE" value="init" />
+    <MESSAGE value="implement byte stuffing technique" />
+    <option name="LAST_COMMIT_MESSAGE" value="implement byte stuffing technique" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="527" y="150" width="925" height="814" key="CommitChangelistDialog2" timestamp="1575465304782">
+    <state x="527" y="150" width="925" height="814" key="CommitChangelistDialog2" timestamp="1575567012310">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
-    <state x="527" y="150" width="925" height="814" key="CommitChangelistDialog2/70.27.1850.1053@70.27.1850.1053" timestamp="1575465304782" />
-    <state x="590" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1575465312017">
+    <state x="527" y="150" width="925" height="814" key="CommitChangelistDialog2/70.27.1850.1053@70.27.1850.1053" timestamp="1575567012310" />
+    <state x="590" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1575567276003">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
-    <state x="590" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2/70.27.1850.1053@70.27.1850.1053" timestamp="1575465312017" />
+    <state x="590" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2/70.27.1850.1053@70.27.1850.1053" timestamp="1575567276003" />
     <state x="658" y="259" key="search.everywhere.popup" timestamp="1575551544344">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>

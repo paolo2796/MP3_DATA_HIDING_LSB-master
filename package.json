@@ -10,6 +10,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "audio-loader": "^1.0.3",
+    "audio-play": "^2.2.1",
     "bitwise": "^2.0.4",
     "buffered-writer": "^0.2.3",
     "mp3-parser": "^0.3.0"
