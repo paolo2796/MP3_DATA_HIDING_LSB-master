@@ -14,6 +14,7 @@
     "audio-play": "^2.2.1",
     "bitwise": "^2.0.4",
     "buffered-writer": "^0.2.3",
-    "mp3-parser": "^0.3.0"
+    "mp3-parser": "^0.3.0",
+    "node-bitarray": "^0.1.0"
   }
 }

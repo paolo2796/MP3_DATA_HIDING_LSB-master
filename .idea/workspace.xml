@@ -3,10 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="a5a66d5a-dd1f-436e-b193-fcc85cdf24ab" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/128kbps_44100.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app2.js" beforeDir="false" afterPath="$PROJECT_DIR$/decoder.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/decoder.js" beforeDir="false" afterPath="$PROJECT_DIR$/decoder.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/encoder.js" beforeDir="false" afterPath="$PROJECT_DIR$/encoder.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/organfinale (seconda copia).mp3" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
@@ -60,7 +58,9 @@
       <workItem from="1575575757924" duration="3062000" />
       <workItem from="1575579277292" duration="670000" />
       <workItem from="1575619578790" duration="5709000" />
-      <workItem from="1575625852501" duration="47000" />
+      <workItem from="1575625852501" duration="200000" />
+      <workItem from="1575797911808" duration="9401000" />
+      <workItem from="1575880121053" duration="5808000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1575465305278</created>
@@ -76,7 +76,14 @@
       <option name="project" value="LOCAL" />
       <updated>1575567012973</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="implementazione header bit unused">
+      <created>1575625931263</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1575625931263</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -85,20 +92,21 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="init" />
     <MESSAGE value="implement byte stuffing technique" />
-    <option name="LAST_COMMIT_MESSAGE" value="implement byte stuffing technique" />
+    <MESSAGE value="implementazione header bit unused" />
+    <option name="LAST_COMMIT_MESSAGE" value="implementazione header bit unused" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="527" y="150" width="925" height="814" key="CommitChangelistDialog2" timestamp="1575567012310">
+    <state x="527" y="150" width="925" height="814" key="CommitChangelistDialog2" timestamp="1575625930653">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
-    <state x="527" y="150" width="925" height="814" key="CommitChangelistDialog2/70.27.1850.1053@70.27.1850.1053" timestamp="1575567012310" />
-    <state x="590" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1575567276003">
+    <state x="527" y="150" width="925" height="814" key="CommitChangelistDialog2/70.27.1850.1053@70.27.1850.1053" timestamp="1575625930653" />
+    <state x="590" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1575625939154">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
-    <state x="590" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2/70.27.1850.1053@70.27.1850.1053" timestamp="1575567276003" />
-    <state x="658" y="259" key="search.everywhere.popup" timestamp="1575551544344">
+    <state x="590" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2/70.27.1850.1053@70.27.1850.1053" timestamp="1575625939154" />
+    <state x="658" y="259" width="672" height="678" key="search.everywhere.popup" timestamp="1575798351760">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
-    <state x="658" y="259" key="search.everywhere.popup/70.27.1850.1053@70.27.1850.1053" timestamp="1575551544344" />
+    <state x="658" y="259" width="672" height="678" key="search.everywhere.popup/70.27.1850.1053@70.27.1850.1053" timestamp="1575798351760" />
   </component>
 </project>
