@@ -1,16 +1,18 @@
+const node_cryptojs = require('node-cryptojs-aes');
+
 exports.one_bit1 = "0";
 exports.one_bit2 = "1";
 exports.two_bit3 = "10";
 exports.two_bit4 = "11";
 
 //convert decimal to binary
-exports.convert_to_binary =
-function (text,format) {
+exports.text_to_binary =
+function (text) {
     var output = "";
     for (var i = 0; i < text.length; i++) {
         var string_no_padding = text[i].charCodeAt(0).toString(2);
         var zero_char = '0';
-        var padding_string = zero_char.repeat(format - string_no_padding.length);
+        var padding_string = zero_char.repeat(8 - string_no_padding.length);
         padding_string += string_no_padding;
         output += padding_string;
     }
@@ -56,4 +58,17 @@ function (bit_val){
     else{
         return "1";
     }
+}
+
+exports.encrypt_message_aes = function(message,pass){
+    var CryptoJS = node_cryptojs.CryptoJS;
+    var encrypted = CryptoJS.AES.encrypt(message, pass);
+    var encrypted_str = encrypted.toString();
+    return encrypted_str;
+}
+
+exports.decrypt_message_aes = function(messsage,pass){
+    var decrypted = node_cryptojs.CryptoJS.AES.decrypt(messsage, pass);
+    var decrypted_str = node_cryptojs.CryptoJS.enc.Utf8.stringify(decrypted);
+    return decrypted_str;
 }
