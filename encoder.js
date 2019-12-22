@@ -20,7 +20,7 @@ var rl = readline.createInterface({
     output: process.stdout
 });
 
-rl.question("file originale (es: audio1.mp3) :", function(answer) {
+rl.question("file originale (es: audio2.mp3) :", function(answer) {
     pathToMp3 = answer.length==0 ? "audio2.mp3" : answer;
     rl.question("passphrase : ", function(answer) {
         pass_aes = answer.length==0 ? "compressione" : answer;
@@ -28,7 +28,7 @@ rl.question("file originale (es: audio1.mp3) :", function(answer) {
             secret_message = answer.length==0 ? "messaggio_default" : answer;
             rl.close();
             if (!pathToMp3) {
-                console.log("please invoke with path to MPEG audio file, i.e. 'node parse.js <file>'");
+                console.log("path file audio non corretto!");
                 process.exit(0);
             }
             fs.readFile(pathToMp3, (error, buffer) => {
@@ -39,9 +39,12 @@ rl.question("file originale (es: audio1.mp3) :", function(answer) {
 
 
                 var buf_dataview = new DataView(toArrayBuffer(buffer));
+                // tags (idv3) mp3
                 const tags = mp3Parser.readTags(buf_dataview);
+                // calcolo primo frame contenente dati audio
                 var dataFrame = mp3Parser.readFrame(buf_dataview,tags[tags.length-1]._section.offset);
 
+                // controllo se il testo segreto può essere iniettato all'interno del file cover
                 if(!check_max_embedbyte(dataFrame,secret_message,buf_dataview)){
                     console.warn("Il messaggio è troppo grande per essere iniettato nel file audio corrente");
                     console.warn("TOT FRAME " + totframes );
@@ -49,14 +52,18 @@ rl.question("file originale (es: audio1.mp3) :", function(answer) {
                     process.exit(1);
                 }
 
+                // cifro testo segreto
                 var message_encrypt = Utils.encrypt_message_aes(secret_message,pass_aes);
                 console.log("TOT FRAMES " + totframes );
                 console.log("PROCESSAMENTO IN CORSO ...");
+                // testo in bits
                 var message_bits = Utils.text_to_binary(message_encrypt);
                 var i=0;
                 while(dataFrame!=null && mp3Parser.readFrame(buf_dataview,dataFrame._section.nextFrameIndex) != null) {
                     /* start substitute_header_bit_unused */
                     substituteHeaderBit(dataFrame,buffer,message_bits[i]);
+
+                    // ottengo prossimo frame da analizzare
                     dataFrame = mp3Parser.readFrame(buf_dataview,dataFrame._section.nextFrameIndex);
                     i++;
                     /* end substitute_header_bit_unused */
@@ -74,7 +81,7 @@ rl.question("file originale (es: audio1.mp3) :", function(answer) {
                      end padding stuff */
                 }
 
-                // open the file in writing mode, adding a callback function where we do the actual writing
+                // apre il file in modalità scrittura, passando la funzione di callback che verrà chiamata per la scrittura dei bytes
                 fs.open(pathMp3Stego, 'w+', function(err, fd) {
                     if (err) {
                         throw 'could not open file: ' + err;
@@ -95,6 +102,8 @@ rl.question("file originale (es: audio1.mp3) :", function(answer) {
 
 
 
+
+// calcola numero di frames disponibili e verifica se c'è spazio per iniettare il testo
 function check_max_embedbyte(dataFrame, message,buf_dataview){
 
     while(mp3Parser.readFrame(buf_dataview,dataFrame._section.nextFrameIndex) != null) {
@@ -112,7 +121,7 @@ function check_max_embedbyte(dataFrame, message,buf_dataview){
     return true
 }
 
-// sostituisce un bit dell'header frame relativo al campo [private,copyright,original]
+// sostituisce un bit dell'header frame relativo al campo {private,copyright,original}
 function substituteHeaderBit(dataFrame,buffer,bitchar){
     // recupero dataframe
     let sliceBuf = buffer.slice(dataFrame._section.offset,dataFrame._section.nextFrameIndex);
@@ -147,7 +156,6 @@ function substituteHeaderBit(dataFrame,buffer,bitchar){
 }
 
 function check_max_embedbyte_unpadding(dataFrame, message,buf_dataview){
-
     while(mp3Parser.readFrame(buf_dataview,dataFrame._section.nextFrameIndex) != null) {
         totframes++;
         if(!dataFrame.header.frameIsPadded) {

@@ -19,7 +19,7 @@ rl.question("passphrase : ", function(answer) {
             rl.close();
 
             if (!pathStegoMp3) {
-                console.log("please invoke with path to MPEG audio file, i.e. 'node parse.js <file>'");
+                console.log("path stego audio non corretto!");
                 process.exit(0);
             }
             fs.readFile(pathStegoMp3, (error, buffer) => {
