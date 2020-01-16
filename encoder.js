@@ -60,7 +60,7 @@ rl.question("file originale (es: audio2.mp3) :", function(answer) {
                 var message_bits = Utils.text_to_binary(message_encrypt);
                 var i=0;
                 while(dataFrame!=null && mp3Parser.readFrame(buf_dataview,dataFrame._section.nextFrameIndex) != null) {
-                    /* start substitute_header_bit_unused */
+                    /* substitute_header_bit_unused */
                     substituteHeaderBit(dataFrame,buffer,message_bits[i]);
 
                     // ottengo prossimo frame da analizzare
@@ -131,7 +131,7 @@ function substituteHeaderBit(dataFrame,buffer,bitchar){
     let lsb = b_dataview.getUint8(sliceBuf.length -1);
     // recupero primi due bit più significativi
     let msb = lsb.toString(2).substring(0,2);
-    //sostituisco  bit dell'header frame
+    //sostituisco  bit dell'header frame (private bit)
     if(msb == Utils.one_bit1 || msb == Utils.one_bit2){
         let byte_header_str = Utils.format_dec_to_binary(b_dataview.getUint8(2),8);
         let bit_=byte_header_str.substring(0,byte_header_str.length-1);
@@ -139,19 +139,23 @@ function substituteHeaderBit(dataFrame,buffer,bitchar){
         let value_modified = Utils.bin_to_dec(byte_modified);
         buffer[dataFrame._section.offset + 2] = value_modified;
     }
+    //sostituisco  bit dell'header frame (copryright bit)
     else if(msb == Utils.two_bit3){
         let byte_header_str = Utils.format_dec_to_binary(b_dataview.getUint8(3),8);
         let bit_=byte_header_str.substring(0,byte_header_str.length-4);
         let byte_modified = bit_ +  Utils.invert_bit(bitchar) + byte_header_str.substring(5);
         let value_modified = Utils.bin_to_dec(byte_modified);
         buffer[dataFrame._section.offset + 3] = value_modified;
+
     }
+    //sostituisco  bit dell'header frame (original bit)
     else if(msb == Utils.two_bit4){
         let byte_header_str = Utils.format_dec_to_binary(b_dataview.getUint8(3),8);
         let bit_=byte_header_str.substring(0,byte_header_str.length-3);
         let byte_modified = bit_ +  Utils.invert_bit(bitchar) + byte_header_str.substring(6);
         let value_modified = Utils.bin_to_dec(byte_modified);
         buffer[dataFrame._section.offset + 3] = value_modified;
+
     }
 }
 

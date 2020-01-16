@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a5a66d5a-dd1f-436e-b193-fcc85cdf24ab" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/decoder.js" beforeDir="false" afterPath="$PROJECT_DIR$/decoder.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/encoder.js" beforeDir="false" afterPath="$PROJECT_DIR$/encoder.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -62,7 +62,11 @@
       <workItem from="1576575059430" duration="183000" />
       <workItem from="1576669024376" duration="1037000" />
       <workItem from="1576955504887" duration="114000" />
-      <workItem from="1577025008468" duration="2908000" />
+      <workItem from="1577025008468" duration="3010000" />
+      <workItem from="1577372390779" duration="33000" />
+      <workItem from="1577631403497" duration="5776000" />
+      <workItem from="1577639598267" duration="793000" />
+      <workItem from="1579188856285" duration="462000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1575465305278</created>
@@ -106,7 +110,14 @@
       <option name="project" value="LOCAL" />
       <updated>1575903424675</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="adjusted code">
+      <created>1577028376264</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1577028376264</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -119,21 +130,22 @@
     <MESSAGE value="implementazione encoder header bit substitute" />
     <MESSAGE value="implementazione header bit decoding senza encrypt" />
     <MESSAGE value="implementazione substitute header bit con cifratura" />
-    <option name="LAST_COMMIT_MESSAGE" value="implementazione substitute header bit con cifratura" />
+    <MESSAGE value="adjusted code" />
+    <option name="LAST_COMMIT_MESSAGE" value="adjusted code" />
   </component>
   <component name="WindowStateProjectService">
     <state x="665" y="358" width="649" height="397" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1576955548929">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
     <state x="665" y="358" width="649" height="397" key="#com.intellij.fileTypes.FileTypeChooser/70.27.1850.1053@70.27.1850.1053" timestamp="1576955548929" />
-    <state x="527" y="150" width="925" height="814" key="CommitChangelistDialog2" timestamp="1575903424606">
+    <state x="527" y="150" width="925" height="814" key="CommitChangelistDialog2" timestamp="1577028375691">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
-    <state x="527" y="150" width="925" height="814" key="CommitChangelistDialog2/70.27.1850.1053@70.27.1850.1053" timestamp="1575903424606" />
-    <state x="590" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1575903428764">
+    <state x="527" y="150" width="925" height="814" key="CommitChangelistDialog2/70.27.1850.1053@70.27.1850.1053" timestamp="1577028375691" />
+    <state x="590" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1577028384695">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
-    <state x="590" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2/70.27.1850.1053@70.27.1850.1053" timestamp="1575903428764" />
+    <state x="590" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2/70.27.1850.1053@70.27.1850.1053" timestamp="1577028384695" />
     <state x="658" y="259" width="672" height="678" key="search.everywhere.popup" timestamp="1575902558975">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
